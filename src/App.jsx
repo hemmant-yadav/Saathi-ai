@@ -3,7 +3,6 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import ReactMarkdown from "react-markdown";   // ✅ Markdown support
 import "./App.css";
 
-// 🔑 Replace with your Gemini API key (better: store in .env)
 const API_KEY = "AIzaSyA6CUbNCik0zXaNCeVBhzcPoQ61gut8eHY";
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
