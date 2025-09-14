@@ -1,0 +1,226 @@
+/* Global styles */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  max-width: 1800px;
+  height: 98vh;
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 50px rgba(0,0,0,0.65);
+  transition: background 0.6s ease-in-out;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.logo { font-size: 1.6rem; }
+
+.tabs {
+  display: flex;
+  gap: 14px;
+}
+
+.tab {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 26px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.tab:hover { background: rgba(255, 255, 255, 0.35); }
+.tab.active { background: rgba(255, 255, 255, 0.65); color: black; }
+
+/* Mood Selector */
+.mood-selector {
+  padding: 14px 28px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+.selector-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mood-selector select {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.quick-moods {
+  display: flex;
+  gap: 12px;
+}
+
+.quick-moods button {
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.quick-moods button:hover { background: rgba(255, 255, 255, 0.5); }
+
+/* Chat Box */
+.chat-box {
+  flex: 1;
+  margin: 20px;
+  border-radius: 18px;
+  padding: 28px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column; /* ✅ messages stack naturally */
+  gap: 18px;
+}
+
+/* Messages */
+.message {
+  max-width: 75%;
+  padding: 16px 20px;
+  border-radius: 20px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #d8fff2;
+  color: #111;
+  border-bottom-right-radius: 8px;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background: #12122b;
+  color: #eee;
+  border-bottom-left-radius: 8px;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  padding: 18px 28px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.input-area input {
+  flex: 1;
+  padding: 16px 20px;
+  border-radius: 22px;
+  border: none;
+  outline: none;
+  margin-right: 14px;
+  font-size: 1.05rem;
+}
+
+.input-area button {
+  background: #7c4dff;
+  border: none;
+  border-radius: 16px;
+  padding: 14px 26px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+.input-area button:hover { background: #b388ff; }
+
+/* Footer */
+.footer {
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #ccc;
+}
+
+/* Mood Themes */
+.mood-calm {
+  background: linear-gradient(135deg, #1a0033, #002b36, #003f5c);
+}
+.mood-happy {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad390);
+  color: #222;
+}
+.mood-motivated {
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #00c6ff);
+}
+.mood-reflective {
+  background: linear-gradient(135deg, #434343, #000000, #232526);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar */
+.chat-box::-webkit-scrollbar { width: 8px; }
+.chat-box::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+}
+.chat-box::-webkit-scrollbar-track { background: transparent; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .chat-box {
+    margin: 10px;
+    padding: 18px;
+  }
+}
